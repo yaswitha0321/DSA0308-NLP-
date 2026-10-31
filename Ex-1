@@ -1,0 +1,14 @@
+import re
+text = "Python is easy. Python is powerful."
+# Search for a word
+result = re.search("Python", text)
+print("Search:", result.group())
+# Find all occurrences
+result = re.findall("Python", text)
+print("Find all:", result)
+# Match at the beginning
+result = re.match("Python", text)
+if result:
+    print("Match:", result.group())
+else:
+    print("No match")
