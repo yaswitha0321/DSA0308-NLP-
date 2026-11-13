@@ -1,0 +1,26 @@
+import nltk
+
+from nltk.tokenize import sent_tokenize
+
+text = """
+Python is a programming language.
+Python is easy to learn.
+Python is used in machine learning.
+"""
+
+sentences = sent_tokenize(text)
+
+print("Number of Sentences:", len(sentences))
+
+words = nltk.word_tokenize(text.lower())
+
+unique_words = set(words)
+
+score = len(unique_words) / len(words)
+
+print("Vocabulary Diversity:", score)
+
+if score > 0.5:
+    print("Text has good vocabulary diversity")
+else:
+    print("Text has low vocabulary diversity")
