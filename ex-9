@@ -1,0 +1,19 @@
+import re
+
+def tag(word):
+    if re.match(r".*ing$", word):
+        return "VBG"
+    elif re.match(r".*ed$", word):
+        return "VBD"
+    elif re.match(r".*ly$", word):
+        return "RB"
+    elif re.match(r".*s$", word):
+        return "NNS"
+    else:
+        return "NN"
+
+words = ["playing", "walked", "quickly",
+         "dogs", "book"]
+
+for word in words:
+    print(word, "->", tag(word))
