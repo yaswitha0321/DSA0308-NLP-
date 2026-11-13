@@ -1,0 +1,21 @@
+import nltk
+
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger_eng')
+
+sentence = "The student reads a book"
+
+words = nltk.word_tokenize(sentence)
+
+tags = nltk.pos_tag(words)
+
+noun_phrases = []
+
+for word, tag in tags:
+    if tag.startswith("NN"):
+        noun_phrases.append(word)
+
+print("Noun Phrases:")
+
+for noun in noun_phrases:
+    print(noun, "->", "Object or Entity")
