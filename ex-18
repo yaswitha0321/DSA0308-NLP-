@@ -1,0 +1,21 @@
+import re
+
+expression = input("Enter logical expression: ")
+
+tokens = re.findall(
+    r"[A-Za-z]+|[()&|~]",
+    expression
+)
+
+print("Tokens:")
+
+for token in tokens:
+    print(token)
+
+if all(token in
+       ["AND", "OR", "NOT", "(", ")", "&", "|", "~"]
+       or token.isalpha()
+       for token in tokens):
+    print("Logical expression parsed")
+else:
+    print("Invalid expression")
