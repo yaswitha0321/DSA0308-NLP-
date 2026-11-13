@@ -1,0 +1,18 @@
+import nltk
+
+grammar = nltk.CFG.fromstring("""
+S -> NP VP
+NP -> Det N
+VP -> V
+Det -> 'the'
+N -> 'cat'
+V -> 'runs'
+""")
+
+parser = nltk.RecursiveDescentParser(grammar)
+
+sentence = ["the", "cat", "runs"]
+
+for tree in parser.parse(sentence):
+    print(tree)
+    tree.pretty_print()
