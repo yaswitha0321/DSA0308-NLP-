@@ -1,0 +1,26 @@
+import nltk
+
+grammar = nltk.CFG.fromstring("""
+S -> NP VP
+NP -> Singular
+NP -> Plural
+VP -> SingularVerb
+VP -> PluralVerb
+
+Singular -> 'He'
+Plural -> 'They'
+
+SingularVerb -> 'runs'
+PluralVerb -> 'run'
+""")
+
+parser = nltk.ChartParser(grammar)
+
+sentence = input("Enter sentence: ").split()
+
+trees = list(parser.parse(sentence))
+
+if trees:
+    print("Sentence is grammatically correct")
+else:
+    print("Sentence is incorrect")
