@@ -1,0 +1,18 @@
+import nltk
+
+grammar = nltk.CFG.fromstring("""
+S -> NP VP
+NP -> Det N
+VP -> V
+Det -> 'the'
+N -> 'dog'
+V -> 'barks'
+""")
+
+parser = nltk.EarleyChartParser(grammar)
+
+sentence = ["the", "dog", "barks"]
+
+for tree in parser.parse(sentence):
+    print(tree)
+    tree.pretty_print()
