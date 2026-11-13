@@ -1,0 +1,17 @@
+import random
+
+probabilities = {
+    "book": {"NN": 0.8, "VB": 0.2},
+    "run": {"NN": 0.3, "VB": 0.7},
+    "dog": {"NN": 0.9, "VB": 0.1}
+}
+
+words = ["book", "run", "dog"]
+
+for word in words:
+    tags = list(probabilities[word].keys())
+    values = list(probabilities[word].values())
+
+    tag = random.choices(tags, weights=values)[0]
+
+    print(word, "->", tag)
