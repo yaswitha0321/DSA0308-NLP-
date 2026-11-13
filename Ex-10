@@ -1,0 +1,26 @@
+import nltk
+
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger_eng')
+
+text = "The cats play outside."
+
+words = nltk.word_tokenize(text)
+
+tags = nltk.pos_tag(words)
+
+print("Before Transformation:")
+print(tags)
+
+new_tags = []
+
+for word, tag in tags:
+    if word.lower() == "play":
+        tag = "VB"
+    elif word.lower() == "cats":
+        tag = "NNS"
+
+    new_tags.append((word, tag))
+
+print("After Transformation:")
+print(new_tags)
