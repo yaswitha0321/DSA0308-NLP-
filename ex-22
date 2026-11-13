@@ -1,0 +1,21 @@
+import nltk
+
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger_eng')
+
+text = "Ravi is a student. He studies Python."
+
+sentences = nltk.sent_tokenize(text)
+
+previous_noun = None
+
+for sentence in sentences:
+    words = nltk.word_tokenize(sentence)
+    tags = nltk.pos_tag(words)
+
+    for word, tag in tags:
+        if tag.startswith("NN"):
+            previous_noun = word
+
+        elif word.lower() in ["he", "she", "it"]:
+            print(word, "refers to", previous_noun)
